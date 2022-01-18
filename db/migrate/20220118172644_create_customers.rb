@@ -6,8 +6,8 @@ class CreateCustomers < ActiveRecord::Migration[6.1]
       t.string :fantasy_name
       t.string :email
       t.string :cnpj
-      t.integer :phone
-      t.integer :cel_phone
+      t.string :phone
+      t.string :cel_phone
 
       t.timestamps
     end

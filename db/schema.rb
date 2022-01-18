@@ -10,10 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_18_172644) do
+ActiveRecord::Schema.define(version: 2022_01_18_173804) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "customer_addresses", force: :cascade do |t|
+    t.string "country"
+    t.string "uf"
+    t.string "city"
+    t.string "district"
+    t.string "complement"
+    t.string "number"
+    t.string "street"
+    t.string "cep"
+    t.bigint "customer_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id"], name: "index_customer_addresses_on_customer_id"
+  end
 
   create_table "customers", force: :cascade do |t|
     t.string "avatar"
@@ -21,8 +36,8 @@ ActiveRecord::Schema.define(version: 2022_01_18_172644) do
     t.string "fantasy_name"
     t.string "email"
     t.string "cnpj"
-    t.integer "phone"
-    t.integer "cel_phone"
+    t.string "phone"
+    t.string "cel_phone"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -39,4 +54,5 @@ ActiveRecord::Schema.define(version: 2022_01_18_172644) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "customer_addresses", "customers"
 end
