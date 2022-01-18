@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_18_210110) do
+ActiveRecord::Schema.define(version: 2022_01_18_213925) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "auto_brands", force: :cascade do |t|
+    t.string "name"
+    t.bigint "rental_company_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["rental_company_id"], name: "index_auto_brands_on_rental_company_id"
+  end
 
   create_table "autos", force: :cascade do |t|
     t.string "name"
@@ -22,6 +30,8 @@ ActiveRecord::Schema.define(version: 2022_01_18_210110) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "category_id"
+    t.bigint "auto_brand_id"
+    t.index ["auto_brand_id"], name: "index_autos_on_auto_brand_id"
     t.index ["category_id"], name: "index_autos_on_category_id"
     t.index ["rental_company_id"], name: "index_autos_on_rental_company_id"
   end
@@ -96,6 +106,8 @@ ActiveRecord::Schema.define(version: 2022_01_18_210110) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "auto_brands", "rental_companies"
+  add_foreign_key "autos", "auto_brands"
   add_foreign_key "autos", "categories"
   add_foreign_key "autos", "rental_companies"
   add_foreign_key "categories", "rental_companies"
