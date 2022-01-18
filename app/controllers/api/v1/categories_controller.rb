@@ -18,7 +18,7 @@ module Api
       # POST /categories
       def create
         @category = Category.new(category_params)
-        @category.auto = Auto.find(params[:auto_id])
+        @category.rental_company = RentalCompany.find(params[:rental_company_id])
 
         if @category.save
           render json: @category, status: :created
@@ -49,7 +49,7 @@ module Api
 
         # Only allow a list of trusted parameters through.
         def category_params
-          params.require(:category).permit(:id, :name, :description, :auto_id)
+          params.require(:category).permit(:id, :name, :description, :rental_company_id)
         end
     end
   end

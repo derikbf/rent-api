@@ -49,7 +49,7 @@ module Api
 
         # Only allow a list of trusted parameters through.
         def auto_params
-          params.require(:auto).permit(:id, :name, :description, :rental_company_id)
+          params.require(:auto).permit(:id, :name, :description, :rental_company_id, :category_id)
         end
     end
   end
