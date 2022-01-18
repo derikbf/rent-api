@@ -11,12 +11,8 @@ Rails.application.routes.draw do
       end
       
       resources :rental_companies do
-        resources :autos
-      end
-      
-      resources :autos do
         resources :categories
-
+        resources :autos
       end
       
     end

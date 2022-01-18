@@ -1,5 +1,5 @@
 class Category < ApplicationRecord
-  belongs_to :auto
+  belongs_to :rental_company
 
   validates :name, presence: true, 
                    :uniqueness => {:case_sensitive => false},

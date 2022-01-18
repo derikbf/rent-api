@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_18_193555) do
+ActiveRecord::Schema.define(version: 2022_01_18_210110) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,14 +21,16 @@ ActiveRecord::Schema.define(version: 2022_01_18_193555) do
     t.bigint "rental_company_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "category_id"
+    t.index ["category_id"], name: "index_autos_on_category_id"
     t.index ["rental_company_id"], name: "index_autos_on_rental_company_id"
   end
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.bigint "auto_id", null: false
-    t.index ["auto_id"], name: "index_categories_on_auto_id"
+    t.bigint "rental_company_id", null: false
+    t.index ["rental_company_id"], name: "index_categories_on_rental_company_id"
   end
 
   create_table "customer_addresses", force: :cascade do |t|
@@ -94,7 +96,8 @@ ActiveRecord::Schema.define(version: 2022_01_18_193555) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "autos", "categories"
   add_foreign_key "autos", "rental_companies"
-  add_foreign_key "categories", "autos"
+  add_foreign_key "categories", "rental_companies"
   add_foreign_key "customer_addresses", "customers"
 end
