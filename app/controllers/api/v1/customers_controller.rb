@@ -12,7 +12,7 @@ module Api
 
       # GET /customers/1
       def show
-        render json: @customer
+        render json: @customer, include: [:customer_address]
       end
 
       # POST /customers
@@ -20,7 +20,7 @@ module Api
         @customer = Customer.new(customer_params)
 
         if @customer.save
-          render json: @customer, status: :created
+          render json: @customer, include: [:customer_address], status: :created
         else
           render json: @customer.errors, status: :unprocessable_entity
         end
@@ -29,7 +29,7 @@ module Api
       # PATCH/PUT /customers/1
       def update
         if @customer.update(customer_params)
-          render json: @customer
+          render json: @customer, include: [:customer_address]
         else
           render json: @customer.errors, status: :unprocessable_entity
         end
@@ -48,8 +48,29 @@ module Api
 
         # Only allow a list of trusted parameters through.
         def customer_params
-          params.require(:customer).permit(:id, :avatar, :corporate_name, :fantasy_name, :email, :cnpj, :phone, :cel_phone)
-        end
+          params.require(:customer).permit(:id, 
+                                           :avatar, 
+                                           :corporate_name, 
+                                           :fantasy_name, 
+                                           :email, 
+                                           :cnpj, 
+                                           :phone, 
+                                           :cel_phone,
+              customer_address_attributes: [
+                                           :id,
+                                           :customer_id,
+                                           :country, 
+                                           :number, 
+                                           :street,
+                                           :city,
+                                           :complement, 
+                                           :district, 
+                                           :uf, 
+                                           :cep,
+                                           :_destroy
+                                           ]                                          
+                                           )
+      end
     end
   end
 end
