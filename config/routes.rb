@@ -6,13 +6,17 @@ Rails.application.routes.draw do
       resources :user_operators
       resources :user_consumers
       
-      
-      resources :rental_companies do
-        resources :categories
-      end
-
       resources :customers do
         resources :customer_address
+      end
+      
+      resources :rental_companies do
+        resources :autos
+      end
+      
+      resources :autos do
+        resources :categories
+
       end
       
     end
