@@ -3,15 +3,16 @@ Rails.application.routes.draw do
   namespace 'api' do
     namespace 'v1' do 
       
-      resources :user_operators
-      resources :user_consumers
-      
       resources :customers do
         resources :customer_address
       end
       
       resources :rental_companies do
         resources :categories
+        resources :customers 
+        resources :user_operators
+        resources :user_consumers
+       
         resources :autos
         resources :auto_models
         resources :auto_brands
@@ -29,8 +30,8 @@ Rails.application.routes.draw do
       end
 
       resources :autos do
-            end
-      
+        resources :bookings
+      end
     end
   end
 end
