@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  door: 1
+  rental_company: one
+
+two:
+  door: 1
+  rental_company: two

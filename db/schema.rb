@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_18_213925) do
+ActiveRecord::Schema.define(version: 2022_01_18_221048) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,86 @@ ActiveRecord::Schema.define(version: 2022_01_18_213925) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["rental_company_id"], name: "index_auto_brands_on_rental_company_id"
+  end
+
+  create_table "auto_colors", force: :cascade do |t|
+    t.string "name"
+    t.bigint "rental_company_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["rental_company_id"], name: "index_auto_colors_on_rental_company_id"
+  end
+
+  create_table "auto_directions", force: :cascade do |t|
+    t.integer "direction"
+    t.bigint "rental_company_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["rental_company_id"], name: "index_auto_directions_on_rental_company_id"
+  end
+
+  create_table "auto_doors", force: :cascade do |t|
+    t.integer "door"
+    t.bigint "rental_company_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["rental_company_id"], name: "index_auto_doors_on_rental_company_id"
+  end
+
+  create_table "auto_exchanges", force: :cascade do |t|
+    t.integer "exchange"
+    t.bigint "rental_company_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["rental_company_id"], name: "index_auto_exchanges_on_rental_company_id"
+  end
+
+  create_table "auto_fuels", force: :cascade do |t|
+    t.string "fuel"
+    t.bigint "rental_company_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["rental_company_id"], name: "index_auto_fuels_on_rental_company_id"
+  end
+
+  create_table "auto_mileages", force: :cascade do |t|
+    t.integer "mileage"
+    t.bigint "rental_company_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["rental_company_id"], name: "index_auto_mileages_on_rental_company_id"
+  end
+
+  create_table "auto_plates", force: :cascade do |t|
+    t.string "name"
+    t.bigint "rental_company_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["rental_company_id"], name: "index_auto_plates_on_rental_company_id"
+  end
+
+  create_table "auto_powers", force: :cascade do |t|
+    t.decimal "power"
+    t.bigint "rental_company_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["rental_company_id"], name: "index_auto_powers_on_rental_company_id"
+  end
+
+  create_table "auto_types", force: :cascade do |t|
+    t.string "name"
+    t.bigint "rental_company_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["rental_company_id"], name: "index_auto_types_on_rental_company_id"
+  end
+
+  create_table "auto_years", force: :cascade do |t|
+    t.integer "year"
+    t.bigint "rental_company_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["rental_company_id"], name: "index_auto_years_on_rental_company_id"
   end
 
   create_table "autos", force: :cascade do |t|
@@ -107,6 +187,16 @@ ActiveRecord::Schema.define(version: 2022_01_18_213925) do
   end
 
   add_foreign_key "auto_brands", "rental_companies"
+  add_foreign_key "auto_colors", "rental_companies"
+  add_foreign_key "auto_directions", "rental_companies"
+  add_foreign_key "auto_doors", "rental_companies"
+  add_foreign_key "auto_exchanges", "rental_companies"
+  add_foreign_key "auto_fuels", "rental_companies"
+  add_foreign_key "auto_mileages", "rental_companies"
+  add_foreign_key "auto_plates", "rental_companies"
+  add_foreign_key "auto_powers", "rental_companies"
+  add_foreign_key "auto_types", "rental_companies"
+  add_foreign_key "auto_years", "rental_companies"
   add_foreign_key "autos", "auto_brands"
   add_foreign_key "autos", "categories"
   add_foreign_key "autos", "rental_companies"
