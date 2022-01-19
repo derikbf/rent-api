@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       resources :rental_companies do
         resources :categories
         resources :autos
+        resources :auto_models
         resources :auto_brands
         resources :auto_plates
         resources :auto_doors
