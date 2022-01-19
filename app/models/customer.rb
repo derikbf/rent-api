@@ -1,6 +1,7 @@
 class Customer < ApplicationRecord
 
   has_one :customer_address, dependent: :destroy 
+  belongs_to :rental_company
 
   accepts_nested_attributes_for :customer_address, allow_destroy: true 
 
