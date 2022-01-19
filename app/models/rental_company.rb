@@ -14,6 +14,7 @@ class RentalCompany < ApplicationRecord
   has_many :auto_powers, dependent: :destroy
   has_many :auto_types, dependent: :destroy
   has_many :auto_years, dependent: :destroy
+  has_many :auto_optionals, dependent: :destroy
   
   validates :email, :corporate_name, :uniqueness => {:case_sensitive => false}
   validates :cnpj, uniqueness: :true  
