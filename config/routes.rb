@@ -27,6 +27,9 @@ Rails.application.routes.draw do
         resources :auto_types
         resources :auto_optionals
       end
+
+      resources :autos do
+            end
       
     end
   end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_19_015143) do
+ActiveRecord::Schema.define(version: 2022_01_19_173643) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -131,12 +131,38 @@ ActiveRecord::Schema.define(version: 2022_01_19_015143) do
   create_table "autos", force: :cascade do |t|
     t.string "name"
     t.string "description"
+    t.string "image_1_path"
+    t.decimal "unit_price", precision: 9, scale: 2
     t.bigint "rental_company_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "category_id"
     t.bigint "auto_brand_id"
+    t.bigint "auto_types_id"
+    t.bigint "auto_years_id"
+    t.bigint "auto_mileages_id"
+    t.bigint "auto_powers_id"
+    t.bigint "auto_fuels_id"
+    t.bigint "auto_exchange_id"
+    t.bigint "auto_directions_id"
+    t.bigint "auto_colors_id"
+    t.bigint "auto_doors_id"
+    t.bigint "auto_plates_id"
+    t.bigint "auto_models_id"
+    t.bigint "auto_optionals_id"
     t.index ["auto_brand_id"], name: "index_autos_on_auto_brand_id"
+    t.index ["auto_colors_id"], name: "index_autos_on_auto_colors_id"
+    t.index ["auto_directions_id"], name: "index_autos_on_auto_directions_id"
+    t.index ["auto_doors_id"], name: "index_autos_on_auto_doors_id"
+    t.index ["auto_exchange_id"], name: "index_autos_on_auto_exchange_id"
+    t.index ["auto_fuels_id"], name: "index_autos_on_auto_fuels_id"
+    t.index ["auto_mileages_id"], name: "index_autos_on_auto_mileages_id"
+    t.index ["auto_models_id"], name: "index_autos_on_auto_models_id"
+    t.index ["auto_optionals_id"], name: "index_autos_on_auto_optionals_id"
+    t.index ["auto_plates_id"], name: "index_autos_on_auto_plates_id"
+    t.index ["auto_powers_id"], name: "index_autos_on_auto_powers_id"
+    t.index ["auto_types_id"], name: "index_autos_on_auto_types_id"
+    t.index ["auto_years_id"], name: "index_autos_on_auto_years_id"
     t.index ["category_id"], name: "index_autos_on_category_id"
     t.index ["rental_company_id"], name: "index_autos_on_rental_company_id"
   end
@@ -173,6 +199,8 @@ ActiveRecord::Schema.define(version: 2022_01_19_015143) do
     t.string "cel_phone"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "rental_company_id", null: false
+    t.index ["rental_company_id"], name: "index_customers_on_rental_company_id"
   end
 
   create_table "rental_companies", force: :cascade do |t|
@@ -187,6 +215,17 @@ ActiveRecord::Schema.define(version: 2022_01_19_015143) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "unavailable_periods", force: :cascade do |t|
+    t.date "start_day"
+    t.date "end_day"
+    t.time "start_hour"
+    t.time "end_hour"
+    t.bigint "auto_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["auto_id"], name: "index_unavailable_periods_on_auto_id"
+  end
+
   create_table "user_consumers", force: :cascade do |t|
     t.string "avatar"
     t.string "name"
@@ -197,6 +236,8 @@ ActiveRecord::Schema.define(version: 2022_01_19_015143) do
     t.string "phone"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "rental_company_id", null: false
+    t.index ["rental_company_id"], name: "index_user_consumers_on_rental_company_id"
   end
 
   create_table "user_operators", force: :cascade do |t|
@@ -209,6 +250,8 @@ ActiveRecord::Schema.define(version: 2022_01_19_015143) do
     t.integer "phone"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "rental_company_id", null: false
+    t.index ["rental_company_id"], name: "index_user_operators_on_rental_company_id"
   end
 
   add_foreign_key "auto_brands", "rental_companies"
@@ -225,8 +268,24 @@ ActiveRecord::Schema.define(version: 2022_01_19_015143) do
   add_foreign_key "auto_types", "rental_companies"
   add_foreign_key "auto_years", "rental_companies"
   add_foreign_key "autos", "auto_brands"
+  add_foreign_key "autos", "auto_colors", column: "auto_colors_id"
+  add_foreign_key "autos", "auto_directions", column: "auto_directions_id"
+  add_foreign_key "autos", "auto_doors", column: "auto_doors_id"
+  add_foreign_key "autos", "auto_exchanges"
+  add_foreign_key "autos", "auto_fuels", column: "auto_fuels_id"
+  add_foreign_key "autos", "auto_mileages", column: "auto_mileages_id"
+  add_foreign_key "autos", "auto_models", column: "auto_models_id"
+  add_foreign_key "autos", "auto_optionals", column: "auto_optionals_id"
+  add_foreign_key "autos", "auto_plates", column: "auto_plates_id"
+  add_foreign_key "autos", "auto_powers", column: "auto_powers_id"
+  add_foreign_key "autos", "auto_types", column: "auto_types_id"
+  add_foreign_key "autos", "auto_years", column: "auto_years_id"
   add_foreign_key "autos", "categories"
   add_foreign_key "autos", "rental_companies"
   add_foreign_key "categories", "rental_companies"
   add_foreign_key "customer_addresses", "customers"
+  add_foreign_key "customers", "rental_companies"
+  add_foreign_key "unavailable_periods", "autos"
+  add_foreign_key "user_consumers", "rental_companies"
+  add_foreign_key "user_operators", "rental_companies"
 end
