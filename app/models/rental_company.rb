@@ -3,6 +3,7 @@ class RentalCompany < ApplicationRecord
   has_many :categories, dependent: :destroy
   has_many :autos, dependent: :destroy
   has_many :auto_brands, dependent: :destroy
+  has_many :auto_models, dependent: :destroy
   has_many :auto_colors, dependent: :destroy
   has_many :auto_directions, dependent: :destroy
   has_many :auto_doors, dependent: :destroy
