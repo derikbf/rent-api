@@ -18,6 +18,7 @@ module Api
       # POST /customers
       def create
         @customer = Customer.new(customer_params)
+        @customer.rental_company = RentalCompany.find(params[:rental_company_id])
 
         if @customer.save
           render json: @customer, include: [:customer_address], status: :created
@@ -56,6 +57,7 @@ module Api
                                            :cnpj, 
                                            :phone, 
                                            :cel_phone,
+                                           :rental_company_id,
               customer_address_attributes: [
                                            :id,
                                            :customer_id,
