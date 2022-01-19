@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  eletric_glass: 1
+  air_bag: 1
+  eletrick_lock: 1
+  air_conditioner: 1
+  alarm: 1
+  sound: 1
+  on_board_computer: 1
+  abs_brakes: 1
+  reverse_sensor: 1
+  reverse_camera: 1
+  rental_company: one
+
+two:
+  eletric_glass: 1
+  air_bag: 1
+  eletrick_lock: 1
+  air_conditioner: 1
+  alarm: 1
+  sound: 1
+  on_board_computer: 1
+  abs_brakes: 1
+  reverse_sensor: 1
+  reverse_camera: 1
+  rental_company: two

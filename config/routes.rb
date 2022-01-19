@@ -25,6 +25,7 @@ Rails.application.routes.draw do
         resources :auto_mileages
         resources :auto_years
         resources :auto_types
+        resources :auto_optionals
       end
       
     end

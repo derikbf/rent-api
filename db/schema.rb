@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_19_012827) do
+ActiveRecord::Schema.define(version: 2022_01_19_015143) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 2022_01_19_012827) do
   end
 
   create_table "auto_fuels", force: :cascade do |t|
-    t.string "fuel"
+    t.integer "fuel"
     t.bigint "rental_company_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -77,6 +77,23 @@ ActiveRecord::Schema.define(version: 2022_01_19_012827) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["rental_company_id"], name: "index_auto_models_on_rental_company_id"
+  end
+
+  create_table "auto_optionals", force: :cascade do |t|
+    t.boolean "eletric_glass"
+    t.boolean "air_bag"
+    t.boolean "eletrick_lock"
+    t.boolean "air_conditioner"
+    t.boolean "alarm"
+    t.boolean "sound"
+    t.boolean "on_board_computer"
+    t.boolean "abs_brakes"
+    t.boolean "reverse_sensor"
+    t.boolean "reverse_camera"
+    t.bigint "rental_company_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["rental_company_id"], name: "index_auto_optionals_on_rental_company_id"
   end
 
   create_table "auto_plates", force: :cascade do |t|
@@ -202,6 +219,7 @@ ActiveRecord::Schema.define(version: 2022_01_19_012827) do
   add_foreign_key "auto_fuels", "rental_companies"
   add_foreign_key "auto_mileages", "rental_companies"
   add_foreign_key "auto_models", "rental_companies"
+  add_foreign_key "auto_optionals", "rental_companies"
   add_foreign_key "auto_plates", "rental_companies"
   add_foreign_key "auto_powers", "rental_companies"
   add_foreign_key "auto_types", "rental_companies"
