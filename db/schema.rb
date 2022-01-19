@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_19_173643) do
+ActiveRecord::Schema.define(version: 2022_01_19_222442) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -167,6 +167,17 @@ ActiveRecord::Schema.define(version: 2022_01_19_173643) do
     t.index ["rental_company_id"], name: "index_autos_on_rental_company_id"
   end
 
+  create_table "bookings", force: :cascade do |t|
+    t.date "start_date"
+    t.date "end_date"
+    t.bigint "auto_id", null: false
+    t.bigint "customer_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["auto_id"], name: "index_bookings_on_auto_id"
+    t.index ["customer_id"], name: "index_bookings_on_customer_id"
+  end
+
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -213,17 +224,6 @@ ActiveRecord::Schema.define(version: 2022_01_19_173643) do
     t.string "cel_phone"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "unavailable_periods", force: :cascade do |t|
-    t.date "start_day"
-    t.date "end_day"
-    t.time "start_hour"
-    t.time "end_hour"
-    t.bigint "auto_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["auto_id"], name: "index_unavailable_periods_on_auto_id"
   end
 
   create_table "user_consumers", force: :cascade do |t|
@@ -282,10 +282,11 @@ ActiveRecord::Schema.define(version: 2022_01_19_173643) do
   add_foreign_key "autos", "auto_years", column: "auto_years_id"
   add_foreign_key "autos", "categories"
   add_foreign_key "autos", "rental_companies"
+  add_foreign_key "bookings", "autos"
+  add_foreign_key "bookings", "customers"
   add_foreign_key "categories", "rental_companies"
   add_foreign_key "customer_addresses", "customers"
   add_foreign_key "customers", "rental_companies"
-  add_foreign_key "unavailable_periods", "autos"
   add_foreign_key "user_consumers", "rental_companies"
   add_foreign_key "user_operators", "rental_companies"
 end
