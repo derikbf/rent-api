@@ -14,6 +14,16 @@ Rails.application.routes.draw do
         resources :categories
         resources :autos
         resources :auto_brands
+        resources :auto_plates
+        resources :auto_doors
+        resources :auto_colors
+        resources :auto_directions
+        resources :auto_exchanges
+        resources :auto_fuels
+        resources :auto_powers
+        resources :auto_mileages
+        resources :auto_years
+        resources :auto_types
       end
       
     end
