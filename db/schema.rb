@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_19_222442) do
+ActiveRecord::Schema.define(version: 2022_01_20_111005) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -221,6 +221,15 @@ ActiveRecord::Schema.define(version: 2022_01_19_222442) do
     t.index ["rental_company_id"], name: "index_customers_on_rental_company_id"
   end
 
+  create_table "ratings", force: :cascade do |t|
+    t.integer "star"
+    t.string "description"
+    t.bigint "booking_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["booking_id"], name: "index_ratings_on_booking_id"
+  end
+
   create_table "rental_companies", force: :cascade do |t|
     t.string "avatar"
     t.string "corporate_name"
@@ -295,6 +304,7 @@ ActiveRecord::Schema.define(version: 2022_01_19_222442) do
   add_foreign_key "categories", "rental_companies"
   add_foreign_key "customer_addresses", "customers"
   add_foreign_key "customers", "rental_companies"
+  add_foreign_key "ratings", "bookings"
   add_foreign_key "user_consumers", "rental_companies"
   add_foreign_key "user_operators", "rental_companies"
 end
