@@ -32,6 +32,11 @@ Rails.application.routes.draw do
       resources :autos do
         resources :bookings
       end
+
+      resources :bookings do
+        resources :ratings
+      end
+
     end
   end
 end
