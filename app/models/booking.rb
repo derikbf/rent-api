@@ -1,7 +1,10 @@
 class Booking < ApplicationRecord
   belongs_to :auto
-  belongs_to :customer
+  belongs_to :customer, optional:true
+  belongs_to :user_consumer, optional:true
 
+  enum status: [:progress, :done, :cancelled]
+  
   validates :start_date, :end_date, presence: true
   validate :end_date_after_start_date
 
