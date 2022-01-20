@@ -170,12 +170,19 @@ ActiveRecord::Schema.define(version: 2022_01_19_222442) do
   create_table "bookings", force: :cascade do |t|
     t.date "start_date"
     t.date "end_date"
+    t.integer "status"
+    t.decimal "total", precision: 9, scale: 2
+    t.decimal "subtotal", precision: 9, scale: 2
+    t.decimal "perc_discount", precision: 9, scale: 2
+    t.decimal "discount", precision: 9, scale: 2
     t.bigint "auto_id", null: false
-    t.bigint "customer_id", null: false
+    t.bigint "customer_id"
+    t.bigint "user_consumer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["auto_id"], name: "index_bookings_on_auto_id"
     t.index ["customer_id"], name: "index_bookings_on_customer_id"
+    t.index ["user_consumer_id"], name: "index_bookings_on_user_consumer_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -284,6 +291,7 @@ ActiveRecord::Schema.define(version: 2022_01_19_222442) do
   add_foreign_key "autos", "rental_companies"
   add_foreign_key "bookings", "autos"
   add_foreign_key "bookings", "customers"
+  add_foreign_key "bookings", "user_consumers"
   add_foreign_key "categories", "rental_companies"
   add_foreign_key "customer_addresses", "customers"
   add_foreign_key "customers", "rental_companies"
