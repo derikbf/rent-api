@@ -18,6 +18,7 @@ module Api
       # POST /user_consumers
       def create
         @user_consumer = UserConsumer.new(user_consumer_params)
+        @user_consumer.rental_company = RentalCompany.find(params[:rental_company_id])
 
         if @user_consumer.save
           render json: @user_consumer, status: :created
@@ -48,7 +49,7 @@ module Api
 
         # Only allow a list of trusted parameters through.
         def user_consumer_params
-          params.require(:user_consumer).permit(:id, :avatar, :name, :username, :email, :password_digest, :cpf, :phone)
+          params.require(:user_consumer).permit(:id, :avatar, :name, :username, :email, :password_digest, :cpf, :phone, :rental_company_id)
         end
     end
   end
