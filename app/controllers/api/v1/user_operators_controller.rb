@@ -18,6 +18,7 @@ module Api
       # POST /user_operators
       def create
         @user_operator = UserOperator.new(user_operator_params)
+        @user_operator.rental_company = RentalCompany.find(params[:rental_company_id])
 
         if @user_operator.save
           render json: @user_operator, status: :created
@@ -48,7 +49,7 @@ module Api
 
         # Only allow a list of trusted parameters through.
         def user_operator_params
-          params.require(:user_operator).permit(:id, :avatar, :name, :username, :email, :password_digest, :cpf, :phone)
+          params.require(:user_operator).permit(:id, :avatar, :name, :username, :email, :password_digest, :cpf, :phone, :rental_company_id)
         end
     end
   end
