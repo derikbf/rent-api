@@ -49,7 +49,7 @@ module Api
 
         # Only allow a list of trusted parameters through.
         def booking_params
-          params.require(:booking).permit(:id, :start_date, :end_date, :auto_id, :customer_id)
+          params.require(:booking).permit(:id, :start_date, :end_date, :total, :auto_id, :customer_id, :user_consumer_id)
         end
     end
   end
