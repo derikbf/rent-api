@@ -1,6 +1,7 @@
 module Api
 	module V1
     class AutoDoorsController < ApplicationController
+      include ErrorSerializer
       before_action :set_auto_door, only: [:show, :update, :destroy]
 
       # GET /auto_doors
@@ -23,7 +24,7 @@ module Api
         if @auto_door.save
           render json: @auto_door, status: :created
         else
-          render json: @auto_door.errors, status: :unprocessable_entity
+          render json: ErrorSerializer.serialize(@auto_door.errors), status: :unprocessable_entity 
         end
       end
 
@@ -32,7 +33,7 @@ module Api
         if @auto_door.update(auto_door_params)
           render json: @auto_door
         else
-          render json: @auto_door.errors, status: :unprocessable_entity
+          render json: ErrorSerializer.serialize(@auto_door.errors), status: :unprocessable_entity 
         end
       end
 
