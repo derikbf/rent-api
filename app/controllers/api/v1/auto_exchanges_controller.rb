@@ -1,6 +1,7 @@
 module Api
 	module V1
     class AutoExchangesController < ApplicationController
+      include ErrorSerializer
       before_action :set_auto_exchange, only: [:show, :update, :destroy]
 
       # GET /auto_exchanges
@@ -23,7 +24,7 @@ module Api
         if @auto_exchange.save
           render json: @auto_exchange, status: :created
         else
-          render json: @auto_exchange.errors, status: :unprocessable_entity
+          render json: ErrorSerializer.serialize(@auto_exchange.errors), status: :unprocessable_entity 
         end
       end
 
@@ -32,7 +33,7 @@ module Api
         if @auto_exchange.update(auto_exchange_params)
           render json: @auto_exchange
         else
-          render json: @auto_exchange.errors, status: :unprocessable_entity
+          render json: ErrorSerializer.serialize(@auto_exchange.errors), status: :unprocessable_entity 
         end
       end
 
