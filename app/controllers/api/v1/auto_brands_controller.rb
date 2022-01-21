@@ -6,7 +6,7 @@ module Api
 
       # GET /auto_brands
       def index
-        @auto_brands = AutoBrand.all
+        @auto_brands = AutoBrand.order("created_at DESC").page(params[:page].try(:[], :number))
 
         render json: @auto_brands
       end
