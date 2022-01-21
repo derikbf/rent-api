@@ -6,7 +6,7 @@ module Api
 
       # GET /auto_directions
       def index
-        @auto_directions = AutoDirection.all
+        @auto_directions = AutoDirection.order("created_at DESC").page(params[:page].try(:[], :number))
 
         render json: @auto_directions
       end
