@@ -1,6 +1,7 @@
 module Api
 	module V1
     class AutoMileagesController < ApplicationController
+      include ErrorSerializer
       before_action :set_auto_mileage, only: [:show, :update, :destroy]
 
       # GET /auto_mileages
@@ -23,7 +24,7 @@ module Api
         if @auto_mileage.save
           render json: @auto_mileage, status: :created
         else
-          render json: @auto_mileage.errors, status: :unprocessable_entity
+          render json: ErrorSerializer.serialize(@auto_mileage.errors), status: :unprocessable_entity 
         end
       end
 
@@ -32,7 +33,7 @@ module Api
         if @auto_mileage.update(auto_mileage_params)
           render json: @auto_mileage
         else
-          render json: @auto_mileage.errors, status: :unprocessable_entity
+          render json: ErrorSerializer.serialize(@auto_mileage.errors), status: :unprocessable_entity 
         end
       end
 
