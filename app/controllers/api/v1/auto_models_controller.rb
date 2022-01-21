@@ -6,7 +6,7 @@ module Api
 
       # GET /auto_models
       def index
-        @auto_models = AutoModel.all
+        @auto_models = AutoModel.order("created_at DESC").page(params[:page].try(:[], :number))
 
         render json: @auto_models
       end
