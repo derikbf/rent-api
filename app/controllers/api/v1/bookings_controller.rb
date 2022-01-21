@@ -6,7 +6,7 @@ module Api
 
       # GET /bookings
       def index
-        @bookings = Booking.all
+        @bookings = Booking.order("created_at DESC").page(params[:page].try(:[], :number))
 
         render json: @bookings
       end
