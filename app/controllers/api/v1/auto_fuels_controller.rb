@@ -6,7 +6,7 @@ module Api
 
       # GET /auto_fuels
       def index
-        @auto_fuels = AutoFuel.all
+        @auto_fuels = AutoFuel.order("created_at DESC").page(params[:page].try(:[], :number))
 
         render json: @auto_fuels
       end
