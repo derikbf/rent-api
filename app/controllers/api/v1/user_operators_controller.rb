@@ -6,7 +6,7 @@ module Api
 
       # GET /user_operators
       def index
-        @user_operators = UserOperator.all
+        @user_operators = UserOperator.order("created_at DESC").page(params[:page].try(:[], :number))
 
         render json: @user_operators
       end
