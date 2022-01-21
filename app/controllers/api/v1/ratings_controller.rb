@@ -6,7 +6,7 @@ module Api
 
       # GET /ratings
       def index
-        @ratings = Rating.all
+        @ratings = Rating.order("created_at DESC").page(params[:page].try(:[], :number))
 
         render json: @ratings
       end
