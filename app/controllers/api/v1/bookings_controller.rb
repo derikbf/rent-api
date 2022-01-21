@@ -1,6 +1,7 @@
 module Api
 	module V1
     class BookingsController < ApplicationController
+      include ErrorSerializer
       before_action :set_booking, only: [:show, :update, :destroy]
 
       # GET /bookings
@@ -23,7 +24,7 @@ module Api
         if @booking.save
           render json: @booking, status: :created
         else
-          render json: @booking.errors, status: :unprocessable_entity
+          render json: ErrorSerializer.serialize(@booking.errors), status: :unprocessable_entity 
         end
       end
 
@@ -32,7 +33,7 @@ module Api
         if @booking.update(booking_params)
           render json: @booking
         else
-          render json: @booking.errors, status: :unprocessable_entity
+          render json: ErrorSerializer.serialize(@booking.errors), status: :unprocessable_entity 
         end
       end
 
