@@ -1,6 +1,7 @@
 module Api
 	module V1
     class AutosController < ApplicationController
+      include ErrorSerializer
       before_action :set_auto, only: [:show, :update, :destroy]
 
       # GET /autos
@@ -23,7 +24,7 @@ module Api
         if @auto.save
           render json: @auto, status: :created
         else
-          render json: @auto.errors, status: :unprocessable_entity
+          render json: ErrorSerializer.serialize(@auto.errors), status: :unprocessable_entity 
         end
       end
 
@@ -32,7 +33,7 @@ module Api
         if @auto.update(auto_params)
           render json: @auto
         else
-          render json: @auto.errors, status: :unprocessable_entity
+          render json: ErrorSerializer.serialize(@auto.errors), status: :unprocessable_entity 
         end
       end
 
