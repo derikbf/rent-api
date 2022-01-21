@@ -6,7 +6,7 @@ module Api
 
       # GET /auto_years
       def index
-        @auto_years = AutoYear.all
+        @auto_years = AutoYear.order("created_at DESC").page(params[:page].try(:[], :number))
 
         render json: @auto_years
       end
