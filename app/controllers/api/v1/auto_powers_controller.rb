@@ -1,6 +1,7 @@
 module Api
 	module V1
     class AutoPowersController < ApplicationController
+      include ErrorSerializer
       before_action :set_auto_power, only: [:show, :update, :destroy]
 
       # GET /auto_powers
@@ -23,7 +24,7 @@ module Api
         if @auto_power.save
           render json: @auto_power, status: :created
         else
-          render json: @auto_power.errors, status: :unprocessable_entity
+          render json: ErrorSerializer.serialize(@auto_power.errors), status: :unprocessable_entity 
         end
       end
 
@@ -32,7 +33,7 @@ module Api
         if @auto_power.update(auto_power_params)
           render json: @auto_power
         else
-          render json: @auto_power.errors, status: :unprocessable_entity
+          render json: ErrorSerializer.serialize(@auto_power.errors), status: :unprocessable_entity 
         end
       end
 
