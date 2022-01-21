@@ -1,4 +1,6 @@
 class Auto < ApplicationRecord
+  acts_as_paranoid
+  
   belongs_to :rental_company
   belongs_to :category
 

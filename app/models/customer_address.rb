@@ -1,4 +1,6 @@
 class CustomerAddress < ApplicationRecord
+  acts_as_paranoid
+  
   belongs_to :customer
   
   validates :number, :street, :country, :city, :district, :uf, :cep, presence: true 

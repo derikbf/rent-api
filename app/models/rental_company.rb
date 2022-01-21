@@ -1,5 +1,6 @@
 class RentalCompany < ApplicationRecord
-
+  acts_as_paranoid
+  
   has_many :categories, dependent: :destroy
   has_many :customers, dependent: :destroy
   has_many :user_consumers, dependent: :destroy
@@ -13,7 +14,7 @@ class RentalCompany < ApplicationRecord
   has_many :auto_doors, dependent: :destroy
   has_many :auto_exchanges, dependent: :destroy
   has_many :auto_fuels, dependent: :destroy
-  has_many :auto_miliages, dependent: :destroy
+  has_many :auto_mileages, dependent: :destroy
   has_many :auto_plates, dependent: :destroy
   has_many :auto_powers, dependent: :destroy
   has_many :auto_types, dependent: :destroy

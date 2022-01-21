@@ -1,4 +1,5 @@
 class Customer < ApplicationRecord
+  acts_as_paranoid
 
   has_one :customer_address, dependent: :destroy 
   belongs_to :rental_company
