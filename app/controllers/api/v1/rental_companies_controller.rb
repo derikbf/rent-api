@@ -6,7 +6,7 @@ module Api
 
       # GET /rental_companies
       def index
-        @rental_companies = RentalCompany.all
+        @rental_companies = RentalCompany.order("created_at DESC").page(params[:page].try(:[], :number))
 
         render json: @rental_companies
       end
@@ -41,9 +41,9 @@ module Api
         @rental_company.destroy
       end
 
-      def my_bookings
-        my_booking
-      end
+      # def my_bookings
+      #   my_booking
+      # end
 
       private
         # Use callbacks to share common setup or constraints between actions.
@@ -51,12 +51,12 @@ module Api
           @rental_company = RentalCompany.find(params[:id])
         end
 
-        def my_booking
-          @customers = Customer.all
-          @bookings = Booking.all
+        # def my_booking
+        #   @customers = Customer.all
+        #   @bookings = Booking.all
 
-          render json: @customers, include: [:bookings]
-        end
+        #   render json: @customers, include: [:bookings]
+        # end
 
         # Only allow a list of trusted parameters through.
         def rental_company_params
