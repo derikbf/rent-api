@@ -1,6 +1,7 @@
 module Api
 	module V1
     class UserConsumersController < ApplicationController
+      include ErrorSerializer
       before_action :set_user_consumer, only: [:show, :update, :destroy]
 
       # GET /user_consumers
@@ -23,7 +24,7 @@ module Api
         if @user_consumer.save
           render json: @user_consumer, status: :created
         else
-          render json: @user_consumer.errors, status: :unprocessable_entity
+          render json: ErrorSerializer.serialize(@user_consumer.errors), status: :unprocessable_entity 
         end
       end
 
@@ -32,7 +33,7 @@ module Api
         if @user_consumer.update(user_consumer_params)
           render json: @user_consumer
         else
-          render json: @user_consumer.errors, status: :unprocessable_entity
+          render json: ErrorSerializer.serialize(@user_consumer.errors), status: :unprocessable_entity 
         end
       end
 
