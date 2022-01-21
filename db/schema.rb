@@ -189,6 +189,8 @@ ActiveRecord::Schema.define(version: 2022_01_20_111005) do
     t.string "name"
     t.string "description"
     t.bigint "rental_company_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["rental_company_id"], name: "index_categories_on_rental_company_id"
   end
 
