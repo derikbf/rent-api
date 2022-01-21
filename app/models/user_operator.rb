@@ -1,4 +1,6 @@
 class UserOperator < ApplicationRecord
+  acts_as_paranoid
+  
   belongs_to :rental_company
 
   validates :email, presence: true, uniqueness: true
