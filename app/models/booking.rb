@@ -1,4 +1,6 @@
 class Booking < ApplicationRecord
+  acts_as_paranoid
+
   belongs_to :auto
   belongs_to :customer, optional:true
   belongs_to :user_consumer, optional:true
