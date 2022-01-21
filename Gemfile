@@ -12,6 +12,9 @@ gem 'kaminari'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem "factory_bot_rails", "~> 6.2"
+  gem "faker", "~> 2.19"
+  gem "rspec-rails", "~> 5.0"
 end
 
 group :development do
@@ -20,3 +23,9 @@ group :development do
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+group :test do
+  gem "database_cleaner-active_record", "~> 2.0"
+  gem "shoulda-matchers", "~> 5.1"
+  gem "simplecov", "~> 0.21.2", require: false
+end
