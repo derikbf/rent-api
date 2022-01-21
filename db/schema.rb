@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_20_111005) do
+ActiveRecord::Schema.define(version: 2022_01_21_200623) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 2022_01_20_111005) do
     t.bigint "rental_company_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_auto_brands_on_deleted_at"
     t.index ["rental_company_id"], name: "index_auto_brands_on_rental_company_id"
   end
 
@@ -28,6 +30,8 @@ ActiveRecord::Schema.define(version: 2022_01_20_111005) do
     t.bigint "rental_company_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_auto_colors_on_deleted_at"
     t.index ["rental_company_id"], name: "index_auto_colors_on_rental_company_id"
   end
 
@@ -36,6 +40,8 @@ ActiveRecord::Schema.define(version: 2022_01_20_111005) do
     t.bigint "rental_company_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_auto_directions_on_deleted_at"
     t.index ["rental_company_id"], name: "index_auto_directions_on_rental_company_id"
   end
 
@@ -44,6 +50,8 @@ ActiveRecord::Schema.define(version: 2022_01_20_111005) do
     t.bigint "rental_company_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_auto_doors_on_deleted_at"
     t.index ["rental_company_id"], name: "index_auto_doors_on_rental_company_id"
   end
 
@@ -52,6 +60,8 @@ ActiveRecord::Schema.define(version: 2022_01_20_111005) do
     t.bigint "rental_company_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_auto_exchanges_on_deleted_at"
     t.index ["rental_company_id"], name: "index_auto_exchanges_on_rental_company_id"
   end
 
@@ -60,6 +70,8 @@ ActiveRecord::Schema.define(version: 2022_01_20_111005) do
     t.bigint "rental_company_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_auto_fuels_on_deleted_at"
     t.index ["rental_company_id"], name: "index_auto_fuels_on_rental_company_id"
   end
 
@@ -68,6 +80,8 @@ ActiveRecord::Schema.define(version: 2022_01_20_111005) do
     t.bigint "rental_company_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_auto_mileages_on_deleted_at"
     t.index ["rental_company_id"], name: "index_auto_mileages_on_rental_company_id"
   end
 
@@ -76,6 +90,8 @@ ActiveRecord::Schema.define(version: 2022_01_20_111005) do
     t.bigint "rental_company_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_auto_models_on_deleted_at"
     t.index ["rental_company_id"], name: "index_auto_models_on_rental_company_id"
   end
 
@@ -93,6 +109,8 @@ ActiveRecord::Schema.define(version: 2022_01_20_111005) do
     t.bigint "rental_company_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_auto_optionals_on_deleted_at"
     t.index ["rental_company_id"], name: "index_auto_optionals_on_rental_company_id"
   end
 
@@ -101,6 +119,8 @@ ActiveRecord::Schema.define(version: 2022_01_20_111005) do
     t.bigint "rental_company_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_auto_plates_on_deleted_at"
     t.index ["rental_company_id"], name: "index_auto_plates_on_rental_company_id"
   end
 
@@ -109,6 +129,8 @@ ActiveRecord::Schema.define(version: 2022_01_20_111005) do
     t.bigint "rental_company_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_auto_powers_on_deleted_at"
     t.index ["rental_company_id"], name: "index_auto_powers_on_rental_company_id"
   end
 
@@ -117,6 +139,8 @@ ActiveRecord::Schema.define(version: 2022_01_20_111005) do
     t.bigint "rental_company_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_auto_types_on_deleted_at"
     t.index ["rental_company_id"], name: "index_auto_types_on_rental_company_id"
   end
 
@@ -125,6 +149,8 @@ ActiveRecord::Schema.define(version: 2022_01_20_111005) do
     t.bigint "rental_company_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_auto_years_on_deleted_at"
     t.index ["rental_company_id"], name: "index_auto_years_on_rental_company_id"
   end
 
@@ -150,6 +176,7 @@ ActiveRecord::Schema.define(version: 2022_01_20_111005) do
     t.bigint "auto_plates_id"
     t.bigint "auto_models_id"
     t.bigint "auto_optionals_id"
+    t.datetime "deleted_at"
     t.index ["auto_brand_id"], name: "index_autos_on_auto_brand_id"
     t.index ["auto_colors_id"], name: "index_autos_on_auto_colors_id"
     t.index ["auto_directions_id"], name: "index_autos_on_auto_directions_id"
@@ -164,6 +191,7 @@ ActiveRecord::Schema.define(version: 2022_01_20_111005) do
     t.index ["auto_types_id"], name: "index_autos_on_auto_types_id"
     t.index ["auto_years_id"], name: "index_autos_on_auto_years_id"
     t.index ["category_id"], name: "index_autos_on_category_id"
+    t.index ["deleted_at"], name: "index_autos_on_deleted_at"
     t.index ["rental_company_id"], name: "index_autos_on_rental_company_id"
   end
 
@@ -180,8 +208,10 @@ ActiveRecord::Schema.define(version: 2022_01_20_111005) do
     t.bigint "user_consumer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "deleted_at"
     t.index ["auto_id"], name: "index_bookings_on_auto_id"
     t.index ["customer_id"], name: "index_bookings_on_customer_id"
+    t.index ["deleted_at"], name: "index_bookings_on_deleted_at"
     t.index ["user_consumer_id"], name: "index_bookings_on_user_consumer_id"
   end
 
@@ -191,6 +221,8 @@ ActiveRecord::Schema.define(version: 2022_01_20_111005) do
     t.bigint "rental_company_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_categories_on_deleted_at"
     t.index ["rental_company_id"], name: "index_categories_on_rental_company_id"
   end
 
@@ -206,7 +238,9 @@ ActiveRecord::Schema.define(version: 2022_01_20_111005) do
     t.bigint "customer_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "deleted_at"
     t.index ["customer_id"], name: "index_customer_addresses_on_customer_id"
+    t.index ["deleted_at"], name: "index_customer_addresses_on_deleted_at"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -220,6 +254,8 @@ ActiveRecord::Schema.define(version: 2022_01_20_111005) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "rental_company_id", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_customers_on_deleted_at"
     t.index ["rental_company_id"], name: "index_customers_on_rental_company_id"
   end
 
@@ -229,7 +265,9 @@ ActiveRecord::Schema.define(version: 2022_01_20_111005) do
     t.bigint "booking_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "deleted_at"
     t.index ["booking_id"], name: "index_ratings_on_booking_id"
+    t.index ["deleted_at"], name: "index_ratings_on_deleted_at"
   end
 
   create_table "rental_companies", force: :cascade do |t|
@@ -242,6 +280,8 @@ ActiveRecord::Schema.define(version: 2022_01_20_111005) do
     t.string "cel_phone"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_rental_companies_on_deleted_at"
   end
 
   create_table "user_consumers", force: :cascade do |t|
@@ -255,6 +295,8 @@ ActiveRecord::Schema.define(version: 2022_01_20_111005) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "rental_company_id", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_user_consumers_on_deleted_at"
     t.index ["rental_company_id"], name: "index_user_consumers_on_rental_company_id"
   end
 
@@ -269,6 +311,8 @@ ActiveRecord::Schema.define(version: 2022_01_20_111005) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "rental_company_id", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_user_operators_on_deleted_at"
     t.index ["rental_company_id"], name: "index_user_operators_on_rental_company_id"
   end
 
