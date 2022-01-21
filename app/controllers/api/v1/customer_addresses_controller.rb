@@ -1,6 +1,7 @@
 module Api
 	module V1
     class CustomerAddressesController < ApplicationController
+      include ErrorSerializer
       before_action :set_customer_address, only: [:show, :update, :destroy]
 
       # GET /customer_addresses
@@ -23,7 +24,7 @@ module Api
         if @customer_address.save
           render json: @customer_address, status: :created
         else
-          render json: @customer_address.errors, status: :unprocessable_entity
+          render json: ErrorSerializer.serialize(@customer_address.errors), status: :unprocessable_entity 
         end
       end
 
@@ -32,7 +33,7 @@ module Api
         if @customer_address.update(customer_address_params)
           render json: @customer_address
         else
-          render json: @customer_address.errors, status: :unprocessable_entity
+          render json: ErrorSerializer.serialize(@customer_address.errors), status: :unprocessable_entity 
         end
       end
 
