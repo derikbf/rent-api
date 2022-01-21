@@ -1,6 +1,7 @@
 module Api
 	module V1
     class AutoColorsController < ApplicationController
+      include ErrorSerializer
       before_action :set_auto_color, only: [:show, :update, :destroy]
 
       # GET /auto_colors
@@ -23,7 +24,7 @@ module Api
         if @auto_color.save
           render json: @auto_color, status: :created
         else
-          render json: @auto_color.errors, status: :unprocessable_entity
+          render json: ErrorSerializer.serialize(@auto_color.errors), status: :unprocessable_entity 
         end
       end
 
@@ -32,7 +33,7 @@ module Api
         if @auto_color.update(auto_color_params)
           render json: @auto_color
         else
-          render json: @auto_color.errors, status: :unprocessable_entity
+          render json: ErrorSerializer.serialize(@auto_color.errors), status: :unprocessable_entity 
         end
       end
 
