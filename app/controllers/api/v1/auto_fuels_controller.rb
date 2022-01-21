@@ -1,6 +1,7 @@
 module Api
 	module V1
     class AutoFuelsController < ApplicationController
+      include ErrorSerializer
       before_action :set_auto_fuel, only: [:show, :update, :destroy]
 
       # GET /auto_fuels
@@ -23,7 +24,7 @@ module Api
         if @auto_fuel.save
           render json: @auto_fuel, status: :created
         else
-          render json: @auto_fuel.errors, status: :unprocessable_entity
+          render json: ErrorSerializer.serialize(@auto_fuel.errors), status: :unprocessable_entity 
         end
       end
 
@@ -32,7 +33,7 @@ module Api
         if @auto_fuel.update(auto_fuel_params)
           render json: @auto_fuel
         else
-          render json: @auto_fuel.errors, status: :unprocessable_entity
+          render json: ErrorSerializer.serialize(@auto_fuel.errors), status: :unprocessable_entity 
         end
       end
 
