@@ -6,7 +6,7 @@ module Api
 
       # GET /auto_powers
       def index
-        @auto_powers = AutoPower.all
+        @auto_powers = AutoPower.order("created_at DESC").page(params[:page].try(:[], :number))
 
         render json: @auto_powers
       end
