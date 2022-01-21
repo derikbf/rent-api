@@ -1,6 +1,7 @@
 module Api
 	module V1
     class AutoBrandsController < ApplicationController
+      include ErrorSerializer
       before_action :set_auto_brand, only: [:show, :update, :destroy]
 
       # GET /auto_brands
@@ -23,7 +24,7 @@ module Api
         if @auto_brand.save
           render json: @auto_brand, status: :created
         else
-          render json: @auto_brand.errors, status: :unprocessable_entity
+          render json: ErrorSerializer.serialize(@auto_brand.errors), status: :unprocessable_entity 
         end
       end
 
@@ -32,7 +33,7 @@ module Api
         if @auto_brand.update(auto_brand_params)
           render json: @auto_brand
         else
-          render json: @auto_brand.errors, status: :unprocessable_entity
+          render json: ErrorSerializer.serialize(@auto_brand.errors), status: :unprocessable_entity 
         end
       end
 
