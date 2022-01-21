@@ -1,6 +1,7 @@
 module Api
 	module V1
     class AutoOptionalsController < ApplicationController
+      include ErrorSerializer
       before_action :set_auto_optional, only: [:show, :update, :destroy]
 
       # GET /auto_optionals
@@ -23,7 +24,7 @@ module Api
         if @auto_optional.save
           render json: @auto_optional, status: :created
         else
-          render json: @auto_optional.errors, status: :unprocessable_entity
+          render json: ErrorSerializer.serialize(@auto_optional.errors), status: :unprocessable_entity 
         end
       end
 
@@ -32,7 +33,7 @@ module Api
         if @auto_optional.update(auto_optional_params)
           render json: @auto_optional
         else
-          render json: @auto_optional.errors, status: :unprocessable_entity
+          render json: ErrorSerializer.serialize(@auto_optional.errors), status: :unprocessable_entity 
         end
       end
 
