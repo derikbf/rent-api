@@ -6,7 +6,7 @@ module Api
 
       # GET /auto_plates
       def index
-        @auto_plates = AutoPlate.all
+        @auto_plates = AutoPlate.order("created_at DESC").page(params[:page].try(:[], :number))
 
         render json: @auto_plates
       end
