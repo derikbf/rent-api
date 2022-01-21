@@ -6,7 +6,7 @@ module Api
 
       # GET /auto_doors
       def index
-        @auto_doors = AutoDoor.all
+        @auto_doors = AutoDoor.order("created_at DESC").page(params[:page].try(:[], :number))
 
         render json: @auto_doors
       end
