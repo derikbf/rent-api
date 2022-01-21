@@ -1,6 +1,7 @@
 module Api
 	module V1
     class RatingsController < ApplicationController
+      include ErrorSerializer
       before_action :set_rating, only: [:show, :update, :destroy]
 
       # GET /ratings
@@ -23,7 +24,7 @@ module Api
         if @rating.save
           render json: @rating, status: :created
         else
-          render json: @rating.errors, status: :unprocessable_entity
+          render json: ErrorSerializer.serialize(@rating.errors), status: :unprocessable_entity 
         end
       end
 
@@ -32,7 +33,7 @@ module Api
         if @rating.update(rating_params)
           render json: @rating
         else
-          render json: @rating.errors, status: :unprocessable_entity
+          render json: ErrorSerializer.serialize(@rating.errors), status: :unprocessable_entity 
         end
       end
 
