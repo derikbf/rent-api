@@ -27,6 +27,8 @@ Rails.application.routes.draw do
         resources :auto_years
         resources :auto_types
         resources :auto_optionals
+
+        get :my_bookings, to: 'rental_companies#my_bookings'
       end
 
       resources :autos do
