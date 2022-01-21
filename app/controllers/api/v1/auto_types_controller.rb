@@ -6,7 +6,7 @@ module Api
 
       # GET /auto_types
       def index
-        @auto_types = AutoType.all
+        @auto_types = AutoType.order("created_at DESC").page(params[:page].try(:[], :number))
 
         render json: @auto_types
       end
