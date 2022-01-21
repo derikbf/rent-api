@@ -6,7 +6,7 @@ module Api
 
       # GET /auto_mileages
       def index
-        @auto_mileages = AutoMileage.all
+        @auto_mileages = AutoMileage.order("created_at DESC").page(params[:page].try(:[], :number))
 
         render json: @auto_mileages
       end
