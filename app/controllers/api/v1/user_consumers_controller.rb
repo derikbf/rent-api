@@ -6,7 +6,7 @@ module Api
 
       # GET /user_consumers
       def index
-        @user_consumers = UserConsumer.all
+        @user_consumers = UserConsumer.order("created_at DESC").page(params[:page].try(:[], :number))
 
         render json: @user_consumers
       end
