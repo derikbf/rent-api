@@ -1,6 +1,7 @@
 module Api
 	module V1
     class UserOperatorsController < ApplicationController
+      include ErrorSerializer
       before_action :set_user_operator, only: [:show, :update, :destroy]
 
       # GET /user_operators
@@ -23,7 +24,7 @@ module Api
         if @user_operator.save
           render json: @user_operator, status: :created
         else
-          render json: @user_operator.errors, status: :unprocessable_entity
+          render json: ErrorSerializer.serialize(@user_operator.errors), status: :unprocessable_entity 
         end
       end
 
@@ -32,7 +33,7 @@ module Api
         if @user_operator.update(user_operator_params)
           render json: @user_operator
         else
-          render json: @user_operator.errors, status: :unprocessable_entity
+          render json: ErrorSerializer.serialize(@user_operator.errors), status: :unprocessable_entity 
         end
       end
 
