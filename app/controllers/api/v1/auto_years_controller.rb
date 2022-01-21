@@ -1,6 +1,7 @@
 module Api
 	module V1
     class AutoYearsController < ApplicationController
+      include ErrorSerializer
       before_action :set_auto_year, only: [:show, :update, :destroy]
 
       # GET /auto_years
@@ -23,7 +24,7 @@ module Api
         if @auto_year.save
           render json: @auto_year, status: :created
         else
-          render json: @auto_year.errors, status: :unprocessable_entity
+          render json: ErrorSerializer.serialize(@auto_year.errors), status: :unprocessable_entity 
         end
       end
 
@@ -32,7 +33,7 @@ module Api
         if @auto_year.update(auto_year_params)
           render json: @auto_year
         else
-          render json: @auto_year.errors, status: :unprocessable_entity
+          render json: ErrorSerializer.serialize(@auto_year.errors), status: :unprocessable_entity 
         end
       end
 
