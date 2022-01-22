@@ -22,3 +22,6 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+## Tests
+![Tests](https://github.com/derikbf/rent-api/actions/workflows/ruby.yml/badge.svg)
