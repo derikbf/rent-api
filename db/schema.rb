@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2022_01_21_200623) do
   enable_extension "plpgsql"
 
   create_table "auto_brands", force: :cascade do |t|
-    t.string "name"
+    t.string "name", limit: 60, null: false
     t.bigint "rental_company_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2022_01_21_200623) do
   end
 
   create_table "auto_colors", force: :cascade do |t|
-    t.string "name"
+    t.string "name", limit: 60, null: false
     t.bigint "rental_company_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2022_01_21_200623) do
   end
 
   create_table "auto_directions", force: :cascade do |t|
-    t.integer "direction"
+    t.integer "direction", default: 0, null: false
     t.bigint "rental_company_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 2022_01_21_200623) do
   end
 
   create_table "auto_doors", force: :cascade do |t|
-    t.integer "door"
+    t.integer "door", default: 0, null: false
     t.bigint "rental_company_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 2022_01_21_200623) do
   end
 
   create_table "auto_exchanges", force: :cascade do |t|
-    t.integer "exchange"
+    t.integer "exchange", default: 0, null: false
     t.bigint "rental_company_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 2022_01_21_200623) do
   end
 
   create_table "auto_fuels", force: :cascade do |t|
-    t.integer "fuel"
+    t.integer "fuel", default: 0, null: false
     t.bigint "rental_company_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(version: 2022_01_21_200623) do
   end
 
   create_table "auto_mileages", force: :cascade do |t|
-    t.integer "mileage"
+    t.string "mileage", limit: 60, null: false
     t.bigint "rental_company_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 2022_01_21_200623) do
   end
 
   create_table "auto_models", force: :cascade do |t|
-    t.string "name"
+    t.string "name", limit: 60, null: false
     t.bigint "rental_company_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -115,7 +115,7 @@ ActiveRecord::Schema.define(version: 2022_01_21_200623) do
   end
 
   create_table "auto_plates", force: :cascade do |t|
-    t.string "name"
+    t.string "name", limit: 7, null: false
     t.bigint "rental_company_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -135,7 +135,7 @@ ActiveRecord::Schema.define(version: 2022_01_21_200623) do
   end
 
   create_table "auto_types", force: :cascade do |t|
-    t.string "name"
+    t.string "name", limit: 60, null: false
     t.bigint "rental_company_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -145,7 +145,7 @@ ActiveRecord::Schema.define(version: 2022_01_21_200623) do
   end
 
   create_table "auto_years", force: :cascade do |t|
-    t.integer "year"
+    t.string "year", limit: 4, null: false
     t.bigint "rental_company_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -155,8 +155,8 @@ ActiveRecord::Schema.define(version: 2022_01_21_200623) do
   end
 
   create_table "autos", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
+    t.string "name", limit: 60, null: false
+    t.string "description", limit: 120
     t.string "image_1_path"
     t.decimal "unit_price", precision: 9, scale: 2
     t.bigint "rental_company_id", null: false
@@ -164,41 +164,41 @@ ActiveRecord::Schema.define(version: 2022_01_21_200623) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "category_id"
     t.bigint "auto_brand_id"
-    t.bigint "auto_types_id"
-    t.bigint "auto_years_id"
-    t.bigint "auto_mileages_id"
-    t.bigint "auto_powers_id"
-    t.bigint "auto_fuels_id"
+    t.bigint "auto_type_id"
+    t.bigint "auto_year_id"
+    t.bigint "auto_mileage_id"
+    t.bigint "auto_power_id"
+    t.bigint "auto_fuel_id"
     t.bigint "auto_exchange_id"
-    t.bigint "auto_directions_id"
-    t.bigint "auto_colors_id"
-    t.bigint "auto_doors_id"
-    t.bigint "auto_plates_id"
-    t.bigint "auto_models_id"
-    t.bigint "auto_optionals_id"
+    t.bigint "auto_direction_id"
+    t.bigint "auto_color_id"
+    t.bigint "auto_door_id"
+    t.bigint "auto_plate_id"
+    t.bigint "auto_model_id"
+    t.bigint "auto_optional_id"
     t.datetime "deleted_at"
     t.index ["auto_brand_id"], name: "index_autos_on_auto_brand_id"
-    t.index ["auto_colors_id"], name: "index_autos_on_auto_colors_id"
-    t.index ["auto_directions_id"], name: "index_autos_on_auto_directions_id"
-    t.index ["auto_doors_id"], name: "index_autos_on_auto_doors_id"
+    t.index ["auto_color_id"], name: "index_autos_on_auto_color_id"
+    t.index ["auto_direction_id"], name: "index_autos_on_auto_direction_id"
+    t.index ["auto_door_id"], name: "index_autos_on_auto_door_id"
     t.index ["auto_exchange_id"], name: "index_autos_on_auto_exchange_id"
-    t.index ["auto_fuels_id"], name: "index_autos_on_auto_fuels_id"
-    t.index ["auto_mileages_id"], name: "index_autos_on_auto_mileages_id"
-    t.index ["auto_models_id"], name: "index_autos_on_auto_models_id"
-    t.index ["auto_optionals_id"], name: "index_autos_on_auto_optionals_id"
-    t.index ["auto_plates_id"], name: "index_autos_on_auto_plates_id"
-    t.index ["auto_powers_id"], name: "index_autos_on_auto_powers_id"
-    t.index ["auto_types_id"], name: "index_autos_on_auto_types_id"
-    t.index ["auto_years_id"], name: "index_autos_on_auto_years_id"
+    t.index ["auto_fuel_id"], name: "index_autos_on_auto_fuel_id"
+    t.index ["auto_mileage_id"], name: "index_autos_on_auto_mileage_id"
+    t.index ["auto_model_id"], name: "index_autos_on_auto_model_id"
+    t.index ["auto_optional_id"], name: "index_autos_on_auto_optional_id"
+    t.index ["auto_plate_id"], name: "index_autos_on_auto_plate_id"
+    t.index ["auto_power_id"], name: "index_autos_on_auto_power_id"
+    t.index ["auto_type_id"], name: "index_autos_on_auto_type_id"
+    t.index ["auto_year_id"], name: "index_autos_on_auto_year_id"
     t.index ["category_id"], name: "index_autos_on_category_id"
     t.index ["deleted_at"], name: "index_autos_on_deleted_at"
     t.index ["rental_company_id"], name: "index_autos_on_rental_company_id"
   end
 
   create_table "bookings", force: :cascade do |t|
-    t.date "start_date"
-    t.date "end_date"
-    t.integer "status"
+    t.date "start_date", null: false
+    t.date "end_date", null: false
+    t.integer "status", default: 0, null: false
     t.decimal "total", precision: 9, scale: 2
     t.decimal "subtotal", precision: 9, scale: 2
     t.decimal "perc_discount", precision: 9, scale: 2
@@ -216,8 +216,8 @@ ActiveRecord::Schema.define(version: 2022_01_21_200623) do
   end
 
   create_table "categories", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
+    t.string "name", limit: 60, null: false
+    t.string "description", limit: 120, null: false
     t.bigint "rental_company_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -227,14 +227,14 @@ ActiveRecord::Schema.define(version: 2022_01_21_200623) do
   end
 
   create_table "customer_addresses", force: :cascade do |t|
-    t.string "country"
-    t.string "uf"
-    t.string "city"
-    t.string "district"
-    t.string "complement"
-    t.string "number"
-    t.string "street"
-    t.string "cep"
+    t.string "country", limit: 50, null: false
+    t.string "uf", limit: 50, null: false
+    t.string "city", limit: 50, null: false
+    t.string "district", limit: 50, null: false
+    t.string "complement", limit: 50
+    t.bigint "number", null: false
+    t.string "street", limit: 50, null: false
+    t.integer "cep", null: false
     t.bigint "customer_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -245,12 +245,12 @@ ActiveRecord::Schema.define(version: 2022_01_21_200623) do
 
   create_table "customers", force: :cascade do |t|
     t.string "avatar"
-    t.string "corporate_name"
-    t.string "fantasy_name"
-    t.string "email"
-    t.string "cnpj"
-    t.string "phone"
-    t.string "cel_phone"
+    t.string "corporate_name", limit: 60, null: false
+    t.string "fantasy_name", limit: 60, null: false
+    t.string "email", limit: 50, null: false
+    t.string "cnpj", null: false
+    t.string "phone", limit: 15, null: false
+    t.string "cel_phone", limit: 15, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "rental_company_id", null: false
@@ -260,7 +260,7 @@ ActiveRecord::Schema.define(version: 2022_01_21_200623) do
   end
 
   create_table "ratings", force: :cascade do |t|
-    t.integer "star"
+    t.integer "star", null: false
     t.string "description"
     t.bigint "booking_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -272,12 +272,12 @@ ActiveRecord::Schema.define(version: 2022_01_21_200623) do
 
   create_table "rental_companies", force: :cascade do |t|
     t.string "avatar"
-    t.string "corporate_name"
-    t.string "fantasy_name"
-    t.string "email"
-    t.string "cnpj"
-    t.string "phone"
-    t.string "cel_phone"
+    t.string "corporate_name", limit: 60, null: false
+    t.string "fantasy_name", limit: 60, null: false
+    t.string "email", limit: 50, null: false
+    t.string "cnpj", null: false
+    t.string "phone", limit: 15, null: false
+    t.string "cel_phone", limit: 15, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "deleted_at"
@@ -286,12 +286,12 @@ ActiveRecord::Schema.define(version: 2022_01_21_200623) do
 
   create_table "user_consumers", force: :cascade do |t|
     t.string "avatar"
-    t.string "name"
-    t.string "username"
-    t.string "email"
+    t.string "name", limit: 60, null: false
+    t.string "username", limit: 60, null: false
+    t.string "email", limit: 50, null: false
     t.string "password_digest"
-    t.string "cpf"
-    t.string "phone"
+    t.string "cpf", null: false
+    t.string "phone", limit: 15, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "rental_company_id", null: false
@@ -302,12 +302,12 @@ ActiveRecord::Schema.define(version: 2022_01_21_200623) do
 
   create_table "user_operators", force: :cascade do |t|
     t.string "avatar"
-    t.string "name"
-    t.string "username"
-    t.string "email"
+    t.string "name", limit: 60, null: false
+    t.string "username", limit: 60, null: false
+    t.string "email", limit: 50, null: false
     t.string "password_digest"
-    t.string "cpf"
-    t.integer "phone"
+    t.string "cpf", null: false
+    t.string "phone", limit: 15, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "rental_company_id", null: false
@@ -330,18 +330,18 @@ ActiveRecord::Schema.define(version: 2022_01_21_200623) do
   add_foreign_key "auto_types", "rental_companies"
   add_foreign_key "auto_years", "rental_companies"
   add_foreign_key "autos", "auto_brands"
-  add_foreign_key "autos", "auto_colors", column: "auto_colors_id"
-  add_foreign_key "autos", "auto_directions", column: "auto_directions_id"
-  add_foreign_key "autos", "auto_doors", column: "auto_doors_id"
+  add_foreign_key "autos", "auto_colors"
+  add_foreign_key "autos", "auto_directions"
+  add_foreign_key "autos", "auto_doors"
   add_foreign_key "autos", "auto_exchanges"
-  add_foreign_key "autos", "auto_fuels", column: "auto_fuels_id"
-  add_foreign_key "autos", "auto_mileages", column: "auto_mileages_id"
-  add_foreign_key "autos", "auto_models", column: "auto_models_id"
-  add_foreign_key "autos", "auto_optionals", column: "auto_optionals_id"
-  add_foreign_key "autos", "auto_plates", column: "auto_plates_id"
-  add_foreign_key "autos", "auto_powers", column: "auto_powers_id"
-  add_foreign_key "autos", "auto_types", column: "auto_types_id"
-  add_foreign_key "autos", "auto_years", column: "auto_years_id"
+  add_foreign_key "autos", "auto_fuels"
+  add_foreign_key "autos", "auto_mileages"
+  add_foreign_key "autos", "auto_models"
+  add_foreign_key "autos", "auto_optionals"
+  add_foreign_key "autos", "auto_plates"
+  add_foreign_key "autos", "auto_powers"
+  add_foreign_key "autos", "auto_types"
+  add_foreign_key "autos", "auto_years"
   add_foreign_key "autos", "categories"
   add_foreign_key "autos", "rental_companies"
   add_foreign_key "bookings", "autos"

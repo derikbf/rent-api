@@ -35,26 +35,3 @@ class Booking < ApplicationRecord
   end
 
 end
-
-
-# -----------------------------------
-# validate :no_reservation_overlap
-  
-# private
-
-# def no_reservation_overlap
-#   if (Booking.where("(? BETWEEN start_date AND end_date OR ? BETWEEN start_date AND end_date)", self.start_date, self.end_date).any?)
-#      errors.add(:end_date, 'it overlaps another reservation')
-#   end
-# end
-
-
-# ----------------------------
-# def booking_period_is_available
-#   return unless 
-#    Booking.where.not(id: id)
-#           .where(`start_date < ? && ? < end_date`, end_date, start_date)
-#           .exists?
-
-#     errors.add(:base, "Car is already booked in this time period")
-# ends
