@@ -1,7 +1,7 @@
 class CreateAutoMileages < ActiveRecord::Migration[6.1]
   def change
     create_table :auto_mileages do |t|
-      t.integer :mileage
+      t.string :mileage, null: false, limit: 60
       t.references :rental_company, null: false, foreign_key: true
 
       t.timestamps
