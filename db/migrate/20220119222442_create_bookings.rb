@@ -1,9 +1,9 @@
 class CreateBookings < ActiveRecord::Migration[6.1]
   def change
     create_table :bookings do |t|
-      t.date :start_date
-      t.date :end_date
-      t.integer :status
+      t.date :start_date, null: false
+      t.date :end_date, null: false
+      t.integer :status, default: 0, null: false
       t.decimal :total, precision: 9, scale: 2
       t.decimal :subtotal, precision: 9, scale: 2
       t.decimal :perc_discount, precision: 9, scale: 2
