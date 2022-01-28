@@ -10,7 +10,8 @@ class CustomerAddress < ApplicationRecord
   validates :uf, length: { minimum: 2, maximum: 50 }
   validates :city, length: { minimum: 3, maximum: 50 }
   validates :district, length: { minimum: 3, maximum: 50 }
+  validates :complement, length: { maximum: 50 }
   validates :number, length: { minimum: 1, maximum: 20 }
-  validates :street, length: { minimum: 3, maximum: 50 }
-  validates :cep, length: { minimum: 8, maximum: 8 }
+  validates :street, length: { minimum: 2, maximum: 50 }
+  validates :cep, length: { is: 8 }, numericality: { only_integer: true }
 end
