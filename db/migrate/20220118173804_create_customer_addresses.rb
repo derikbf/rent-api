@@ -8,7 +8,7 @@ class CreateCustomerAddresses < ActiveRecord::Migration[6.1]
       t.string :complement, null: true, limit: 50
       t.integer :number, null: false, limit: 6
       t.string :street, null: false, limit: 50
-      t.integer :cep, null: false, lenght: { is: 8 }
+      t.string :cep, null: false, lenght: { is: 8 }
       t.references :customer, null: false, foreign_key: true
 
       t.timestamps
