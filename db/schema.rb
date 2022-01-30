@@ -217,7 +217,7 @@ ActiveRecord::Schema.define(version: 2022_01_21_200623) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name", limit: 60, null: false
-    t.string "description", limit: 120, null: false
+    t.string "description", limit: 120
     t.bigint "rental_company_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
