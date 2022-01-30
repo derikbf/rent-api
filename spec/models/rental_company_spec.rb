@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe RentalCompany, type: :model do
+  subject(:rental_company) { build :rental_company }
+
   describe "validations" do
     # it { is_expected.to validate_uniqueness_of(:email).case_insensitive }
     # it { is_expected.to validate_uniqueness_of(:corporate_name).case_insensitive }
@@ -19,7 +21,7 @@ RSpec.describe RentalCompany, type: :model do
     it { is_expected.to validate_numericality_of(:phone) }
     it { is_expected.to validate_length_of(:phone).is_at_least(11).is_at_most(15) }
 
-    it { should validate_length_of(:cnpj).is_equal_to(14) }
+    it { is_expected.to validate_length_of(:cnpj).is_equal_to(14) }
   end
     
   describe "relationships" do
