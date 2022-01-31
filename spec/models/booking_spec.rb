@@ -16,6 +16,6 @@ RSpec.describe Booking, type: :model do
   describe 'relationships' do
     it { is_expected.to belong_to(:auto) } 
     it { is_expected.to belong_to(:customer).optional } 
-    it { is_expected.to belong_to(:user_consumer).optional } 
+    it { is_expected.to belong_to(:user).optional } 
   end
 end
