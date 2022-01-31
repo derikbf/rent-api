@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_21_200623) do
+ActiveRecord::Schema.define(version: 2022_01_31_164411) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -205,14 +205,14 @@ ActiveRecord::Schema.define(version: 2022_01_21_200623) do
     t.decimal "discount", precision: 9, scale: 2
     t.bigint "auto_id", null: false
     t.bigint "customer_id"
-    t.bigint "user_consumer_id"
+    t.bigint "users_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "deleted_at"
     t.index ["auto_id"], name: "index_bookings_on_auto_id"
     t.index ["customer_id"], name: "index_bookings_on_customer_id"
     t.index ["deleted_at"], name: "index_bookings_on_deleted_at"
-    t.index ["user_consumer_id"], name: "index_bookings_on_user_consumer_id"
+    t.index ["users_id"], name: "index_bookings_on_users_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -234,7 +234,7 @@ ActiveRecord::Schema.define(version: 2022_01_21_200623) do
     t.string "complement", limit: 50
     t.bigint "number", null: false
     t.string "street", limit: 50, null: false
-    t.integer "cep", null: false
+    t.string "cep", null: false
     t.bigint "customer_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -284,22 +284,6 @@ ActiveRecord::Schema.define(version: 2022_01_21_200623) do
     t.index ["deleted_at"], name: "index_rental_companies_on_deleted_at"
   end
 
-  create_table "user_consumers", force: :cascade do |t|
-    t.string "avatar"
-    t.string "name", limit: 60, null: false
-    t.string "username", limit: 60, null: false
-    t.string "email", limit: 50, null: false
-    t.string "password_digest"
-    t.string "cpf", null: false
-    t.string "phone", limit: 15, null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.bigint "rental_company_id", null: false
-    t.datetime "deleted_at"
-    t.index ["deleted_at"], name: "index_user_consumers_on_deleted_at"
-    t.index ["rental_company_id"], name: "index_user_consumers_on_rental_company_id"
-  end
-
   create_table "user_operators", force: :cascade do |t|
     t.string "avatar"
     t.string "name", limit: 60, null: false
@@ -314,6 +298,38 @@ ActiveRecord::Schema.define(version: 2022_01_21_200623) do
     t.datetime "deleted_at"
     t.index ["deleted_at"], name: "index_user_operators_on_deleted_at"
     t.index ["rental_company_id"], name: "index_user_operators_on_rental_company_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "avatar"
+    t.string "name", limit: 60, null: false
+    t.string "username", limit: 60, null: false
+    t.string "email", limit: 50, null: false
+    t.string "password_digest"
+    t.string "cpf", null: false
+    t.string "phone", limit: 15, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "rental_company_id", null: false
+    t.datetime "deleted_at"
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
+    t.index ["deleted_at"], name: "index_users_on_deleted_at"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["rental_company_id"], name: "index_users_on_rental_company_id"
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "auto_brands", "rental_companies"
@@ -346,11 +362,11 @@ ActiveRecord::Schema.define(version: 2022_01_21_200623) do
   add_foreign_key "autos", "rental_companies"
   add_foreign_key "bookings", "autos"
   add_foreign_key "bookings", "customers"
-  add_foreign_key "bookings", "user_consumers"
+  add_foreign_key "bookings", "users", column: "users_id"
   add_foreign_key "categories", "rental_companies"
   add_foreign_key "customer_addresses", "customers"
   add_foreign_key "customers", "rental_companies"
   add_foreign_key "ratings", "bookings"
-  add_foreign_key "user_consumers", "rental_companies"
   add_foreign_key "user_operators", "rental_companies"
+  add_foreign_key "users", "rental_companies"
 end

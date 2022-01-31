@@ -11,6 +11,7 @@ gem 'active_model_serializers', "~> 0.10.2"
 gem 'kaminari'
 gem 'paranoia'
 gem 'rack-cors'
+gem 'devise'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -22,6 +23,7 @@ end
 group :development do
   gem 'listen', '~> 3.3'
   gem 'spring' 
+  gem "letter_opener", "~> 1.7"
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
@@ -31,3 +33,4 @@ group :test do
   gem "shoulda-matchers", "~> 5.1"
   gem "simplecov", "~> 0.21.2", require: false
 end
+
