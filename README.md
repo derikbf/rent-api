@@ -103,7 +103,6 @@ Foram desenvolvidos ao longo do projeto mais de 200 testes.
 
 - **[Paranóia](https://github.com/rubysherpas/paranoia)**
 
-
 ## Instalando o Projeto - Backend
 - Costumo utilizar alias para os comandos do docker compose
 
