@@ -27,7 +27,7 @@ RSpec.describe RentalCompany, type: :model do
   describe "relationships" do
     it { is_expected.to have_many(:categories) }
     it { is_expected.to have_many(:customers) }
-    it { is_expected.to have_many(:user_consumers) }
+    it { is_expected.to have_many(:users) }
     it { is_expected.to have_many(:user_operators) }
     it { is_expected.to have_many(:autos)}
     it { is_expected.to have_many(:auto_brands)}
