@@ -104,7 +104,7 @@ Foram desenvolvidos ao longo do projeto mais de 200 testes.
 - **[Paranóia](https://github.com/rubysherpas/paranoia)**
 
 ## Instalando o Projeto - Backend
-- Costumo utilizar alias para os comandos do docker compose
+- Costumo utilizar alias para os comandos do docker compose - arquivo MAKEFILE
 
 1 git clone https://github.com/derikbf/rent-api.git
 2 cd rent-api
