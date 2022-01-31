@@ -9,6 +9,6 @@ FactoryBot.define do
     discount { rand(1..50) }
     auto_id { 1 }
     customer_id { 1 }
-    user_consumer_id { 1 }
+    user_id { 1 }
   end
 end
