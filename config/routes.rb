@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
-
   namespace 'api' do
     namespace 'v1' do 
-      
       resources :customers do
         resources :customer_address
       end
@@ -11,7 +9,7 @@ Rails.application.routes.draw do
         resources :categories
         resources :customers 
         resources :user_operators
-        resources :user_consumers
+        resources :users 
        
         resources :autos
         resources :auto_models
