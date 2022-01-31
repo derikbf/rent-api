@@ -28,19 +28,28 @@ direção, marca, entre outros)
 - Tela de pedido da reserva com Valores, total, desconto (cupom), subtotal, nome do usuário, etc)
 <br /><p>
 - Testes automáticos com RSPEC - mais de 200 testes;
-- Validação dos campos no nível de Aplicação e no nivel de Banco.
+- Validação dos campos no nível de Aplicação e no nível de Banco.
+  - Algumas validações:
+    - Campos obrigatórios
+    - Campos únicos (não pode repetir - Ex: CPF/CNPJ)
+    - Campos que aceitam somente números (ex: CPF/CNPJ)
+    - Campos iguals com case sensitive (Maiúsculo de Minúsculo)
+    - Min e Máx de caracters de campos
+    - Etc..
+
 <br /><p>
 - Inserção de Deleção Lógica (gem paranoia)
-- Inserção de Paginação (gem kaminari)
+- Inserção de Paginação (gem kaminari) **A FAZER**
 - Serialização (gem active model serializer)
 - Configurado CORS (gem rack-cors)
 - Configurado CI/CD para o Github Actions
 - Deploy automático no Hekoru
-- 
+- Seed para popular o banco (gem faker) **A FAZER**
 -
 -
 -
-- A Collection do projeto está na pasta principal do projeto. Nome: Collection-Rent-API.json
+- A Collection do projeto está na pasta principal do projeto. 
+  - Nome: Collection-Rent-API.json
 
 ## Tests
 ![Tests](https://github.com/derikbf/rent-api/actions/workflows/ruby.yml/badge.svg)
@@ -93,4 +102,20 @@ Foram desenvolvidos ao longo do projeto mais de 200 testes.
 **Deleção Lógica**:
 
 - **[Paranóia](https://github.com/rubysherpas/paranoia)**
+
+## Instalando o Projeto - Backend
+- Costumo utilizar alias para os comandos do docker compose
+
+1 git clone https://github.com/derikbf/rent-api.git
+2 cd rent-api
+3 make reset 
+  - rodará: db:drop db:create db:migrate db:seed
+    - Criará o banco e rodará as migrations e rodará o seed.
+4 make bash
+5 bundle install
+6 exit
+7 make up ou sudo make up (caso acuse erro de permissão)
+
+Gif com o passo a passo:
+<!-- ![Testes](https://i.ibb.co/GTZW0Df/ecommerce-02.png) -->
 
