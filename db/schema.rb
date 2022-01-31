@@ -205,14 +205,14 @@ ActiveRecord::Schema.define(version: 2022_01_21_200623) do
     t.decimal "discount", precision: 9, scale: 2
     t.bigint "auto_id", null: false
     t.bigint "customer_id"
-    t.bigint "users_id"
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "deleted_at"
     t.index ["auto_id"], name: "index_bookings_on_auto_id"
     t.index ["customer_id"], name: "index_bookings_on_customer_id"
     t.index ["deleted_at"], name: "index_bookings_on_deleted_at"
-    t.index ["users_id"], name: "index_bookings_on_users_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -346,7 +346,7 @@ ActiveRecord::Schema.define(version: 2022_01_21_200623) do
   add_foreign_key "autos", "rental_companies"
   add_foreign_key "bookings", "autos"
   add_foreign_key "bookings", "customers"
-  add_foreign_key "bookings", "users", column: "users_id"
+  add_foreign_key "bookings", "users"
   add_foreign_key "categories", "rental_companies"
   add_foreign_key "customer_addresses", "customers"
   add_foreign_key "customers", "rental_companies"
