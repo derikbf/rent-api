@@ -106,15 +106,15 @@ Foram desenvolvidos ao longo do projeto mais de 200 testes.
 ## Instalando o Projeto - Backend
 - Costumo utilizar alias para os comandos do docker compose - arquivo MAKEFILE
 
-1 git clone https://github.com/derikbf/rent-api.git
-2 cd rent-api
-3 make reset 
+- git clone https://github.com/derikbf/rent-api.git
+- cd rent-api
+- make reset 
   - rodará: db:drop db:create db:migrate db:seed
     - Criará o banco e rodará as migrations e rodará o seed.
-4 make bash
-5 bundle install
-6 exit
-7 make up ou sudo make up (caso acuse erro de permissão)
+- make bash
+- bundle install
+- exit
+- make up ou sudo make up (caso acuse erro de permissão)
 
 Gif com o passo a passo:
 <!-- ![Testes](https://i.ibb.co/GTZW0Df/ecommerce-02.png) -->
