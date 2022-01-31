@@ -1,16 +1,5 @@
 class User < ApplicationRecord
-  acts_as_token_authenticatable
   acts_as_paranoid
-  # Include default devise modules. Others available are:
-  #  :lockable, :timeoutable,  and :omniauthable
-  devise :database_authenticatable, 
-         :registerable,
-         :recoverable, 
-         :rememberable, 
-         :validatable,
-         :trackable,
-         :confirmable
-  
   belongs_to :rental_company
 
   validates :name, presence: true
