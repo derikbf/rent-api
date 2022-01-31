@@ -37,6 +37,13 @@ direção, marca, entre outros)
 - Configurado CI/CD para o Github Actions
 - Deploy automático no Hekoru
 - 
+-
+-
+-
+- A Collection do projeto está na pasta principal do projeto. Nome: Collection-Rent-API.json
+
+## Tests
+![Tests](https://github.com/derikbf/rent-api/actions/workflows/ruby.yml/badge.svg)
 
 ## Testes
 
@@ -87,5 +94,3 @@ Foram desenvolvidos ao longo do projeto mais de 200 testes.
 
 - **[Paranóia](https://github.com/rubysherpas/paranoia)**
 
-## Tests
-![Tests](https://github.com/derikbf/rent-api/actions/workflows/ruby.yml/badge.svg)
