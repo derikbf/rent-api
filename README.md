@@ -23,7 +23,7 @@ direção, marca, entre outros)
 - Reserva de carros (com validação do range de datas)
 - Tela de pedido da reserva com Valores, total, desconto (cupom), subtotal, nome do usuário, etc)
 <br /><p>
-- Testes automáticos com RSPEC - mais de 200 testes;
+- Testes automáticos com RSPEC;
 - Validação dos campos no nível de Aplicação e no nível de Banco.
   - Algumas validações:
     - Campos obrigatórios
