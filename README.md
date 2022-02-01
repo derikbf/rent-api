@@ -55,7 +55,7 @@ Previsão de aproximadamente 300 testes automatizados.
 ![Testes](https://i.ibb.co/rf9QYrF/model.png)
 
 Só é realizada o merge no github com a branch principal, caso nenhum teste falhe. 
-![Testes](https://i.ibb.co/SnD0dS8/push.jpg)
+![Testes](https://i.ibb.co/mGLHSGK/push.png)
 
 
 ## Tecnologias utilizadas:
