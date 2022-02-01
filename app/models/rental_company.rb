@@ -3,7 +3,7 @@ class RentalCompany < ApplicationRecord
   
   has_many :categories, dependent: :destroy
   has_many :customers, dependent: :destroy
-  has_many :user_consumers, dependent: :destroy
+  has_many :users, dependent: :destroy
   has_many :user_operators, dependent: :destroy
 
   has_many :autos, dependent: :destroy

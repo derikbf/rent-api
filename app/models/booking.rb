@@ -3,7 +3,7 @@ class Booking < ApplicationRecord
 
   belongs_to :auto
   belongs_to :customer, optional:true
-  belongs_to :user_consumer, optional:true
+  belongs_to :user, optional:true
 
   enum status: [:progress, :done, :cancelled]
   

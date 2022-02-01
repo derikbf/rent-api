@@ -60,8 +60,8 @@ class AddDeletedAtToAuto < ActiveRecord::Migration[6.1]
     add_column :rental_companies, :deleted_at, :datetime
     add_index :rental_companies, :deleted_at
 
-    add_column :user_consumers, :deleted_at, :datetime
-    add_index :user_consumers, :deleted_at
+    add_column :users, :deleted_at, :datetime
+    add_index :users, :deleted_at
     
     add_column :user_operators, :deleted_at, :datetime
     add_index :user_operators, :deleted_at
