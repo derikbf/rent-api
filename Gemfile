@@ -11,8 +11,6 @@ gem 'active_model_serializers', "~> 0.10.2"
 gem 'kaminari'
 gem 'paranoia'
 gem 'rack-cors'
-gem 'devise'
-gem "simple_token_authentication"
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
