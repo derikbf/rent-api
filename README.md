@@ -115,6 +115,3 @@ Só é realizada o merge no github com a branch principal, caso nenhum teste fal
 - exit
 - make up ou sudo make up (caso acuse erro de permissão)
 
-Gif com o passo a passo:
-<!-- ![Testes](https://i.ibb.co/GTZW0Df/ecommerce-02.png) -->
-
