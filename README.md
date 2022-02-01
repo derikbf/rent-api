@@ -4,8 +4,6 @@ Este repositório é composto pela API desenvolvida por mim (Dérik) para fins d
 
 O projeto é para simular um sistema de locadora de carros.
 
-link para repositório do projeto em React Native: LINK
-
 **Principais tecnologias utilizadas:** <br>
 ![enter image description here](https://img.shields.io/badge/Ruby_on_Rails-CC0000?style=for-the-badge&logo=ruby-on-rails&logoColor=white) ![enter image description here](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
 
