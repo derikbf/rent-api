@@ -11,6 +11,9 @@ gem 'active_model_serializers', "~> 0.10.2"
 gem 'kaminari'
 gem 'paranoia'
 gem 'rack-cors'
+gem 'jwt'
+gem 'bcrypt'
+gem 'simple_command'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
