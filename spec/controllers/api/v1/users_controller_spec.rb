@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Api::V1::UserConsumersController, type: :controller do
+RSpec.describe Api::V1::UsersController, type: :controller do
   # describe "GET index" do
   #   it 'has a 200 status code' do
   #     get :index

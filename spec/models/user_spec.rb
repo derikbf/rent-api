@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe UserConsumer, type: :model do
-  subject(:user_consumer) { build :user_consumer }
+RSpec.describe User, type: :model do
+  subject(:user) { build :user }
 
   describe 'validations' do
     it { is_expected.to validate_presence_of(:name) }

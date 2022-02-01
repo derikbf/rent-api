@@ -10,7 +10,7 @@ class CreateBookings < ActiveRecord::Migration[6.1]
       t.decimal :discount, precision: 9, scale: 2
       t.references :auto, null: false, foreign_key: true
       t.references :customer, null: true, foreign_key: true
-      t.references :user_consumer, null: true, foreign_key: true
+      t.references :user, null: true, foreign_key: true
 
       t.timestamps
     end

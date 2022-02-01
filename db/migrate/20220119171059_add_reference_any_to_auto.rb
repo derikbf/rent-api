@@ -16,7 +16,7 @@ class AddReferenceAnyToAuto < ActiveRecord::Migration[6.1]
     add_reference :autos, :auto_optional, null: true, foreign_key: true
     
     add_reference :user_operators, :rental_company, null: false, foreign_key: true
-    add_reference :user_consumers, :rental_company, null: false, foreign_key: true
+    add_reference :users, :rental_company, null: false, foreign_key: true
     add_reference :customers, :rental_company, null: false, foreign_key: true
   end
 end
