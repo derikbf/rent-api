@@ -115,7 +115,7 @@ ActiveRecord::Schema.define(version: 2022_01_21_200623) do
   end
 
   create_table "auto_plates", force: :cascade do |t|
-    t.string "name", limit: 7, null: false
+    t.string "name", null: false
     t.bigint "rental_company_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
