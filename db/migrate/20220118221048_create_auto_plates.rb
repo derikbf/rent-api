@@ -1,7 +1,7 @@
 class CreateAutoPlates < ActiveRecord::Migration[6.1]
   def change
     create_table :auto_plates do |t|
-      t.string :name, null: false, limit: 7
+      t.string :name, null: false
       t.references :rental_company, null: false, foreign_key: true
 
       t.timestamps

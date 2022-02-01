@@ -4,6 +4,5 @@ class AutoPlate < ApplicationRecord
   belongs_to :rental_company
 
   validates :name, presence: true, 
-                   :uniqueness => {:case_sensitive => false},
-                   length: {  is: 7 }
+                   :uniqueness => {:case_sensitive => false}
 end
