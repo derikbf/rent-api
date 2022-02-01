@@ -234,7 +234,7 @@ ActiveRecord::Schema.define(version: 2022_01_21_200623) do
     t.string "complement", limit: 50
     t.bigint "number", null: false
     t.string "street", limit: 50, null: false
-    t.integer "cep", null: false
+    t.string "cep", null: false
     t.bigint "customer_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
