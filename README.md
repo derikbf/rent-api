@@ -9,8 +9,6 @@ link para repositório do projeto em React Native: LINK
 **Principais tecnologias utilizadas:** <br>
 ![enter image description here](https://img.shields.io/badge/Ruby_on_Rails-CC0000?style=for-the-badge&logo=ruby-on-rails&logoColor=white) ![enter image description here](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
 
-<!-- ![MainImg](https://i.ibb.co/qpTmRJw/ecommerce-01.png) -->
-
 ## Funcionalidades do Projeto
 
 - Cadastro de Locadoras
@@ -44,10 +42,7 @@ direção, marca, entre outros)
 - Configurado CORS (gem rack-cors)
 - Configurado CI/CD para o Github Actions
 - Deploy automático no Hekoru
-- Seed para popular o banco (gem faker) **A FAZER**
--
--
--
+- Seed para popular o banco (gem faker)
 - A Collection do projeto está na pasta principal do projeto. 
   - Nome: Collection-Rent-API.json
 
@@ -56,8 +51,14 @@ direção, marca, entre outros)
 
 ## Testes
 
-Foram desenvolvidos ao longo do projeto mais de 200 testes.
-<!-- ![Testes](https://i.ibb.co/GTZW0Df/ecommerce-02.png) -->
+Foram desenvolvidos ao longo do projeto 126 testes do Modelo.
+Pendente inserção de testes de API e Controllers.
+Previsão de aproximadamente 300 testes automatizados.
+![Testes](https://i.ibb.co/rf9QYrF/model.png)
+
+Só é realizada o merge no github com a branch principal, caso nenhum teste falhe. 
+![Testes](https://i.ibb.co/SnD0dS8/push.jpg)
+
 
 ## Tecnologias utilizadas:
 
