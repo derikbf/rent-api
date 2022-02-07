@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Faker::Config.locale = 'pt-BR'
-
+p "Inicio do cadastro do Rental Company"
 1.times do 
   rental = RentalCompany.create({
     corporate_name: Faker::Company.unique.name,
@@ -18,7 +18,9 @@ Faker::Config.locale = 'pt-BR'
     cnpj: Faker::Company.unique.brazilian_company_number
   })
 end
+p "Fimn do cadastro do Rental Company"
 
+p "Inicio do cadastro do User Operator"
 15.times do
   user_operator = UserOperator.create({
     rental_company_id: 1,
@@ -30,8 +32,9 @@ end
     phone: Faker::PhoneNumber.unique.subscriber_number(length: 15)
   })
 end
+p "Fim do cadastro do User Operator"
 
-
+p "Inicio do cadastro do User"
 15.times do
   user = User.create({
     rental_company_id: 1,
@@ -43,7 +46,9 @@ end
     phone: Faker::PhoneNumber.unique.subscriber_number(length: 15)
   })
 end
+p "Fium do cadastro do User"
 
+p "Inicio do cadastro do Customer"
 15.times do
   customer = Customer.create({
     rental_company_id: 1,
@@ -55,7 +60,9 @@ end
     cnpj: Faker::Company.unique.brazilian_company_number
   })
 end
+p "Fim do cadastro do Customer"
 
+p "Inicio do cadastro do Customer Address"
 15.times do |i|
   customer_address = CustomerAddress.create({
     customer_id: "#{i}",
@@ -69,7 +76,9 @@ end
     cep: Faker::Number.number(digits: 8)
   })
 end
+p "Fim do cadastro do Customer Address"
 
+p "Inicio do cadastro do Category"
 10.times do
   category = Category.create({
     rental_company_id: 1,
@@ -77,7 +86,9 @@ end
 		description: Faker::Company.industry    
   })
 end
+p "Fim do cadastro do Category"
 
+p "Inicio do cadastro do Autos"
 15.times do
   brand = AutoBrand.create({
     rental_company_id: 1,
@@ -199,7 +210,9 @@ end
     auto_optional_id: rand(1..10)
   })
 end
+p "Fim do cadastro do Autos"
 
+p "Inicio do cadastro do Booking"
 10.times do |i|
   booking = Booking.create({
     auto_id: "#{i}",
@@ -209,3 +222,4 @@ end
     total: 150
   })
 end
+p "Fim do cadastro do Booking"

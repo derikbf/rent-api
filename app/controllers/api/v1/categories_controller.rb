@@ -8,12 +8,12 @@ module Api
       def index
         @categories = Category.order("created_at DESC").page(params[:page].try(:[], :number))
 
-        render json: @categories
+        render json: @categories, status: 200
       end
 
       # GET /categories/1
       def show
-        render json: @category
+        render json: @category 
       end
 
       # POST /categories
